@@ -10,7 +10,7 @@ conn = psycopg2.connect(
 conn.autocommit = True
 cur = conn.cursor()
 
-cur.execute("CREATE DATABASE myenv;")
+cur.execute("CREATE DATABASE preschool_db;")
 cur.close()
 conn.close()
 print("Database created successfully.")
