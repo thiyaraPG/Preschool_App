@@ -37,7 +37,6 @@ def create_student():
     # --- Create student ---
     student = Student(
         name=name,
-        age=age,
         parent_name=parent_name,
         contact_number=contact_number,
         email=email
