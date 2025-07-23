@@ -3,8 +3,6 @@ from flask_cors import CORS
 from werkzeug.security import generate_password_hash
 from database import db
 from models.teacher import Teacher
-from routes.teacher_routes import teacher_bp
-
 
 app = Flask(__name__)
 
@@ -34,8 +32,31 @@ def after_request(response):
 def home():
     return {"message": "Backend is running"}
 
-# Register teacher routes
-app.register_blueprint(teacher_bp)
+# --- Teacher Registration ---
+@app.route('/register', methods=['POST', 'OPTIONS'])
+def register():
+    if request.method == 'OPTIONS':  # Preflight request
+        return '', 200
+
+    data = request.json
+    teacher_id = data.get('teacher_id')
+    email = data.get('email')
+    password = data.get('password')
+
+    if not teacher_id or not email or not password:
+        return jsonify({"error": "All fields are required"}), 400
+
+    # Check for existing email
+    existing_teacher = Teacher.query.filter_by(email=email).first()
+    if existing_teacher:
+        return jsonify({"error": "Email already registered"}), 400
+
+    hashed_password = generate_password_hash(password)
+    teacher = Teacher(teacher_id=teacher_id, email=email, password=hashed_password)  # FIXED
+    db.session.add(teacher)
+    db.session.commit()
+
+    return jsonify({"message": "Teacher registered successfully"}), 201
 
 # --- Run Server ---
 if __name__ == '__main__':
