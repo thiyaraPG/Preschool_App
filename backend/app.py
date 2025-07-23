@@ -3,7 +3,9 @@ from flask_cors import CORS
 from werkzeug.security import generate_password_hash
 from database import db
 from models.teacher import Teacher
+from models.student import Student
 from routes.teacher_routes import teacher_bp
+from routes.student_routes import student_bp
 
 app = Flask(__name__)
 
@@ -35,6 +37,8 @@ def home():
 
 # Register teacher routes
 app.register_blueprint(teacher_bp)
+# Register student routes
+app.register_blueprint(student_bp)
 
 # --- Run Server ---
 if __name__ == '__main__':
