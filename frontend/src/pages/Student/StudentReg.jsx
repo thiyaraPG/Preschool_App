@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import GroupBG from '../../assets/GroupBG.png';
-import TeacherRegImg from './Images/TeacherReg.png';
+import StudentRegImg from './Images/StudentReg.png';
 
 function StudentReg() {
     const [formData, setFormData] = useState({
@@ -57,7 +57,7 @@ function StudentReg() {
     };
 
     return (
-        <div className="d-flex h-100 w-100">
+        <div className="d-flex vh-100 w-100">
             {/* Left Section */}
             <div className="d-flex" style={{ backgroundColor: '#364290', width: '30%' }}>
                 <div className="d-flex flex-column justify-content-between text-center w-100 h-100 pt-5">
@@ -66,7 +66,7 @@ function StudentReg() {
                         <h1 className="text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>A Student!</h1>
                     </div>
                     <div className="d-flex justify-content-center position-relative">
-                        <img src={TeacherRegImg} alt="Bottom Logo" style={{ width: '120%', maxWidth: 'none', transform: 'translateX(9%)' }} />
+                        <img src={StudentRegImg} alt="Bottom Logo" style={{ width: '120%', maxWidth: 'none', transform: 'translateX(9%)' }} />
                     </div>
                 </div>
             </div>
@@ -74,16 +74,16 @@ function StudentReg() {
             {/* Right Section */}
             <div className="flex-grow-1 d-flex" style={{ backgroundColor: '#CFDFFF', backgroundImage: `url(${GroupBG})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
                 <div className="d-flex flex-column text-center h-100 w-100">
-                    <div className="d-flex flex-column" style={{ padding: '10px 60px 60px 60px' }}>
+                    <div className="d-flex flex-column" style={{ padding: '60px 60px 60px 60px' }}>
                         <div style={{ color: '#364290', fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: '26px' }}>New Student Registration!</div>
                         <div className="mt-1" style={{ color: '#364290', fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: '24px' }}>Please fill out the form below to get started</div>
                     </div>
 
-                    <form className="d-flex flex-column gap-4 justify-content-start" style={{ width: '30%', margin: '0 auto' }} onSubmit={handleSubmit}>
+                    <form className="d-flex flex-column gap-4 justify-content-start" style={{ width: '50%', margin: '0 auto' }} onSubmit={handleSubmit}>
                         {/* Name */}
                         <div className="w-100">
                             <h3 className="text-start" style={{ color: '#364290', fontFamily: 'Poppins, sans-serif', fontWeight: 500, fontSize: '16px' }}>Student Name *</h3>
-                            <input type="text" name="name" className="form-control" placeholder="Enter name with initials" style={{ height: '40px', borderRadius: '8px', borderColor: '#364290', fontFamily: 'Poppins, sans-serif' }} value={formData.name} onChange={handleChange} required />
+                            <input type="text" name="name" className="form-control" placeholder="Enter full name" style={{ height: '40px', borderRadius: '8px', borderColor: '#364290', fontFamily: 'Poppins, sans-serif' }} value={formData.name} onChange={handleChange} required />
                         </div>
 
                         {/* Email */}
